@@ -34,7 +34,7 @@ const logStudy = async (req,res)=>{
         let cluster_label = null;
         let recommendations = [];
         try{
-            const predictResponse = await axios.post('http://localhost:5000/predict', {
+            const predictResponse = await axios.post(`${process.env.ML_SERVICE_URL}/predict`, {
                 study_hours  : study_hours,
                 sleep_hours : sleep_hours,
                 breaks_taken : breaks_taken,
@@ -50,7 +50,7 @@ const logStudy = async (req,res)=>{
         }
 
         try{
-            const clusterResponse = await axios.post('http://localhost:5000/cluster', {
+            const clusterResponse = await axios.post(`${process.env.ML_SERVICE_URL}/cluster`, {
                 study_hours  : study_hours,
                 sleep_hours : sleep_hours,
                 breaks_taken : breaks_taken,
